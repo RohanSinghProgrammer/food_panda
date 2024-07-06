@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_panda/screens/email_auth_screen.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -157,7 +158,14 @@ class AuthScreen extends StatelessWidget {
                   Row(children: [
                     Expanded(
                         child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const EmailAuthScreen()),
+                              );
+                            },
                             child: Container(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 28, vertical: 12),
