@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_panda/screens/home_screen.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
 
 class FillAccountInfo extends StatelessWidget {
@@ -11,11 +12,11 @@ class FillAccountInfo extends StatelessWidget {
     final TextEditingController passwordController = TextEditingController();
 
     void navigateToHomeScreen() {
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => const LoginWithEmail(),
-      //     ));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomeScreen(),
+          ));
     }
 
     return Scaffold(

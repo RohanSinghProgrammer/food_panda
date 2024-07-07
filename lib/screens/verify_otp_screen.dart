@@ -1,28 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:food_panda/screens/fill_account_info.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
+import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class VerifyOtp extends StatelessWidget {
   const VerifyOtp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-
-    void verifyEmail() {
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => const FillAccountInfo(),
-      //     ));
-    }
 
     void resendCode() {
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => const FillAccountInfo(),
-      //     ));
+      // TODO: Resend Verify Code Function
     }
 
     return Scaffold(
@@ -62,43 +49,33 @@ class VerifyOtp extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      CustomInputField(
-                        label: "Password",
-                        controller: emailController,
-                        obscureText: true,
+                      OtpTextField(
+                        fieldWidth: 80,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        numberOfFields: 4,
+                        focusedBorderColor: const Color(0xFFFF2B85),
+                        showFieldAsBox: false,
+                        onCodeChanged: (String code) {
+                          //handle validation or checks here
+                        },
+                        //runs when every textfield is filled
+                        onSubmit: (String verificationCode) {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text("Verification Code"),
+                                  content:
+                                      Text('Code entered is $verificationCode'),
+                                );
+                              });
+                        }, // end onSubmit
                       ),
                     ]),
               ),
             ),
             Column(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton(
-                          onPressed: verifyEmail,
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFFF2B85),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                              )),
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 12),
-                            child: Text(
-                              "Verify email",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          )),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
                 Row(
                   children: [
                     Expanded(
