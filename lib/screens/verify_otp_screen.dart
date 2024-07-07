@@ -1,38 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:food_panda/screens/email_password_screen.dart';
+import 'package:food_panda/screens/fill_account_info.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
 
-class EmailAuthScreen extends StatelessWidget {
-  const EmailAuthScreen({super.key});
+class VerifyOtp extends StatelessWidget {
+  const VerifyOtp({super.key});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
 
-    void navigateToEmailLogin() {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LoginWithEmail(),
-          ));
+    void verifyEmail() {
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const FillAccountInfo(),
+      //     ));
+    }
+
+    void resendCode() {
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const FillAccountInfo(),
+      //     ));
     }
 
     return Scaffold(
       appBar: AppBar(
         foregroundColor: const Color(0xFFFF2B85),
         backgroundColor: Colors.white,
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            child: InkWell(
-              onTap: navigateToEmailLogin,
-              child: const Text(
-                "Continue",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -45,14 +41,14 @@ class EmailAuthScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        "assets/email_icon.png",
-                        scale: 3,
+                        "assets/login_icon.png",
+                        scale: 2.5,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       const Text(
-                        "What's your email?",
+                        "Verify your email address to get started",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 28,
@@ -61,14 +57,16 @@ class EmailAuthScreen extends StatelessWidget {
                       const SizedBox(
                         height: 6,
                       ),
-                      const Text(" We'll check if you have an account"),
+                      const Text(
+                          " This help us to mitigate fraud and keep your personal data safe"),
                       const SizedBox(
                         height: 16,
                       ),
                       CustomInputField(
-                        label: "Email",
+                        label: "Password",
                         controller: emailController,
-                      )
+                        obscureText: true,
+                      ),
                     ]),
               ),
             ),
@@ -78,7 +76,7 @@ class EmailAuthScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                          onPressed: navigateToEmailLogin,
+                          onPressed: verifyEmail,
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFFF2B85),
                               shape: RoundedRectangleBorder(
@@ -87,7 +85,7 @@ class EmailAuthScreen extends StatelessWidget {
                           child: const Padding(
                             padding: EdgeInsets.symmetric(vertical: 12),
                             child: Text(
-                              "Continue",
+                              "Verify email",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -95,9 +93,37 @@ class EmailAuthScreen extends StatelessWidget {
                               ),
                             ),
                           )),
-                    )
+                    ),
                   ],
                 ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                          onPressed: resendCode,
+                          style: ElevatedButton.styleFrom(
+                              side: const BorderSide(
+                                  width: 1.0, color: Color(0xFFFF2B85)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              )),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 12),
+                            child: Text(
+                              "Resend verification code",
+                              style: TextStyle(
+                                color: Color(0xFFFF2B85),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                    ),
+                  ],
+                )
               ],
             )
           ],

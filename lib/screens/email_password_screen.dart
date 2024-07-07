@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_panda/screens/fill_account_info.dart';
+import 'package:food_panda/screens/verify_otp_screen.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
 
 class LoginWithEmail extends StatelessWidget {
@@ -8,12 +10,20 @@ class LoginWithEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
 
-    void navigateToEmailLogin() {
-      // Navigator.push(
-      //     context,
-      //     MaterialPageRoute(
-      //       builder: (context) => const LoginWithEmail(),
-      //     ));
+    void navigateToFillDetails() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const FillAccountInfo(),
+          ));
+    }
+
+    void navigateToForgetPassword() {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const VerifyOtp(),
+          ));
     }
 
     return Scaffold(
@@ -26,46 +36,59 @@ class LoginWithEmail extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Image.asset(
-                "assets/login_icon.png",
-                scale: 2.5,
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset(
+                        "assets/login_icon.png",
+                        scale: 2.5,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      const Text(
+                        "Log in with your email",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      const Text(
+                          " Login with your password to rs7289579@gmail.com. or get a login link via email"),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CustomInputField(
+                        label: "Password",
+                        controller: emailController,
+                        obscureText: true,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 8),
+                        child: InkWell(
+                            onTap: navigateToForgetPassword,
+                            child: const Text(
+                              "I forgot my password?",
+                              style: TextStyle(
+                                  color: Color(0xFFFF2B85),
+                                  fontWeight: FontWeight.bold),
+                            )),
+                      ),
+                    ]),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text(
-                "Log in with your email",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                ),
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              const Text(
-                  " Loin with your password to rs7289579@gmail.com. or get a login link via email"),
-              const SizedBox(
-                height: 16,
-              ),
-              CustomInputField(
-                label: "Password",
-                controller: emailController,
-                obscureText: true,
-              )
-            ]),
+            ),
             Column(
               children: [
-                const Divider(),
-                const SizedBox(
-                  height: 6,
-                ),
                 Row(
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                          onPressed: navigateToEmailLogin,
+                          onPressed: navigateToFillDetails,
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFFF2B85),
                               shape: RoundedRectangleBorder(
@@ -92,7 +115,7 @@ class LoginWithEmail extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OutlinedButton(
-                          onPressed: navigateToEmailLogin,
+                          onPressed: navigateToFillDetails,
                           style: ElevatedButton.styleFrom(
                               side: const BorderSide(
                                   width: 1.0, color: Color(0xFFFF2B85)),

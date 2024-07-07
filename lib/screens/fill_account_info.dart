@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:food_panda/screens/email_password_screen.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
 
-class EmailAuthScreen extends StatelessWidget {
-  const EmailAuthScreen({super.key});
+class FillAccountInfo extends StatelessWidget {
+  const FillAccountInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
+    final TextEditingController firstNameController = TextEditingController();
+    final TextEditingController lastNameController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
 
-    void navigateToEmailLogin() {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LoginWithEmail(),
-          ));
+    void navigateToHomeScreen() {
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const LoginWithEmail(),
+      //     ));
     }
 
     return Scaffold(
@@ -25,7 +26,7 @@ class EmailAuthScreen extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(right: 20),
             child: InkWell(
-              onTap: navigateToEmailLogin,
+              onTap: navigateToHomeScreen,
               child: const Text(
                 "Continue",
                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -45,14 +46,14 @@ class EmailAuthScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.asset(
-                        "assets/email_icon.png",
+                        "assets/profile_icon.png",
                         scale: 3,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
                       const Text(
-                        "What's your email?",
+                        "Let's get you started!",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 28,
@@ -61,13 +62,38 @@ class EmailAuthScreen extends StatelessWidget {
                       const SizedBox(
                         height: 6,
                       ),
-                      const Text(" We'll check if you have an account"),
+                      const Text(
+                          " First, let's create your foodpanda account with rs7289579@gmail.com"),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width:
+                                  (MediaQuery.of(context).size.width / 2) - 30,
+                              child: CustomInputField(
+                                controller: firstNameController,
+                                label: "First Name",
+                              ),
+                            ),
+                            SizedBox(
+                              width:
+                                  (MediaQuery.of(context).size.width / 2) - 30,
+                              child: CustomInputField(
+                                controller: lastNameController,
+                                label: "Last Name",
+                              ),
+                            )
+                          ]),
                       const SizedBox(
                         height: 16,
                       ),
                       CustomInputField(
-                        label: "Email",
-                        controller: emailController,
+                        label: "Password",
+                        controller: passwordController,
+                        obscureText: true,
                       )
                     ]),
               ),
@@ -78,7 +104,7 @@ class EmailAuthScreen extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ElevatedButton(
-                          onPressed: navigateToEmailLogin,
+                          onPressed: navigateToHomeScreen,
                           style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFFFF2B85),
                               shape: RoundedRectangleBorder(
