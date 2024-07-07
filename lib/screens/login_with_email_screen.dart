@@ -1,38 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:food_panda/screens/login_with_email_screen.dart';
 import 'package:food_panda/widgets/custom_input_field.dart';
 
-class EmailAuthScreen extends StatelessWidget {
-  const EmailAuthScreen({super.key});
+class LoginWithEmail extends StatelessWidget {
+  const LoginWithEmail({super.key});
 
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
 
     void navigateToEmailLogin() {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const LoginWithEmail(),
-          ));
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => const LoginWithEmail(),
+      //     ));
     }
 
     return Scaffold(
       appBar: AppBar(
         foregroundColor: const Color(0xFFFF2B85),
         backgroundColor: Colors.white,
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20),
-            child: InkWell(
-              onTap: navigateToEmailLogin,
-              child: const Text(
-                "Continue",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(24),
@@ -41,14 +28,14 @@ class EmailAuthScreen extends StatelessWidget {
           children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Image.asset(
-                "assets/email_icon.png",
-                scale: 3,
+                "assets/login_icon.png",
+                scale: 2.5,
               ),
               const SizedBox(
                 height: 20,
               ),
               const Text(
-                "What's your email?",
+                "Log in with your email",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 28,
@@ -57,13 +44,15 @@ class EmailAuthScreen extends StatelessWidget {
               const SizedBox(
                 height: 6,
               ),
-              const Text(" We'll check if you have an account"),
+              const Text(
+                  " Loin with your password to rs7289579@gmail.com. or get a login link via email"),
               const SizedBox(
                 height: 16,
               ),
               CustomInputField(
-                label: "Email",
+                label: "Password",
                 controller: emailController,
+                obscureText: true,
               )
             ]),
             Column(
@@ -85,7 +74,7 @@ class EmailAuthScreen extends StatelessWidget {
                           child: const Padding(
                             padding: EdgeInsets.symmetric(vertical: 12),
                             child: Text(
-                              "Continue",
+                              "Login with password",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -93,9 +82,37 @@ class EmailAuthScreen extends StatelessWidget {
                               ),
                             ),
                           )),
-                    )
+                    ),
                   ],
                 ),
+                const SizedBox(
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                          onPressed: navigateToEmailLogin,
+                          style: ElevatedButton.styleFrom(
+                              side: const BorderSide(
+                                  width: 1.0, color: Color(0xFFFF2B85)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              )),
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(vertical: 12),
+                            child: Text(
+                              "Send me a login link",
+                              style: TextStyle(
+                                color: Color(0xFFFF2B85),
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )),
+                    ),
+                  ],
+                )
               ],
             )
           ],
