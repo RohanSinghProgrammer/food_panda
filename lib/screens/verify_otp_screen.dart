@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_panda/widgets/custom_input_field.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
 class VerifyOtp extends StatelessWidget {
