@@ -26,7 +26,7 @@ class Data {
       'imagePath': 'assets/pandago.png',
     },
   ];
-  final List<Map<String, dynamic>> restaurants = [
+  static final List<Map<String, dynamic>> restaurants = [
     {
       'name': 'MMK-S FOODS',
       'rating': '4.0',
