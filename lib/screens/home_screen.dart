@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:food_panda/components/carousel.dart';
 import 'package:food_panda/components/staggered_grid_posters.dart';
+import 'package:food_panda/widgets/custom_drawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
+        drawer: const CustomDrawer(),
         backgroundColor: Colors.grey[100],
         body: CustomScrollView(slivers: <Widget>[
           SliverAppBar(
             expandedHeight: 130,
             backgroundColor: const Color(0xFFFF2B85),
             leading: IconButton(
-                onPressed: () {},
+                onPressed: () => _scaffoldKey.currentState?.openDrawer(),
                 icon: const Icon(
                   Icons.menu,
                   color: Colors.white,
