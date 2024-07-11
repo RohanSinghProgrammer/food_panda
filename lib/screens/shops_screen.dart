@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_panda/components/cricket_deals_tab.dart';
 import 'package:food_panda/components/popular_tab.dart';
 import 'package:food_panda/data/data.dart';
 
@@ -262,9 +263,9 @@ class _ShopsScreenState extends State<ShopsScreen>
                     padding: const EdgeInsets.symmetric(vertical: 16),
                     child: [
                       const PopularTab(),
-                      Text("Creacket"),
-                      Text("Pepsi"),
-                      Text("All")
+                      const CricketDealsTab(),
+                      const Text("Pepsi"),
+                      const Text("All")
                     ][_tabController.index])
               ]),
             ),

@@ -3,8 +3,8 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:food_panda/data/data.dart';
 import 'package:food_panda/screens/product_screen.dart';
 
-class PopularTab extends StatelessWidget {
-  const PopularTab({super.key});
+class CricketDealsTab extends StatelessWidget {
+  const CricketDealsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class PopularTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const Text(
-              "Popular",
+              "Cricket Deals",
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -23,7 +23,7 @@ class PopularTab extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            const Text("Most ordered right now"),
+            const Text("Get cricket special deals on live match"),
             const SizedBox(
               height: 12,
             ),
